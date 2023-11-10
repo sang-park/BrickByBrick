@@ -17,6 +17,7 @@ const PlayerStats = ({ teams }: PlayerStatsProps) => {
                             <tr>
                                 <th>Number</th>
                                 <th>Name</th>
+                                <th>PTS</th>
                                 <th>FGM</th>
                                 <th>FGA</th>
                                 <th>3PTM</th>

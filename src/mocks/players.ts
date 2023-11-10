@@ -1,5 +1,24 @@
 import { StatType } from "../types/enums";
 
+const createRandomStat = (max: number = 12) => {
+    return Math.round(Math.random() * max);
+}
+
+const createRandomStats = () => {
+    return {
+        [StatType.twoPointsMade]: createRandomStat(),
+        [StatType.twoPointsMissed]: createRandomStat(),
+        [StatType.threePointsMade]: createRandomStat(),
+        [StatType.threePointsMissed]: createRandomStat(),
+        [StatType.oRebounds]: createRandomStat(),
+        [StatType.dRebounds]: createRandomStat(),
+        [StatType.assists]: createRandomStat(),
+        [StatType.steals]: createRandomStat(),
+        [StatType.blocks]: createRandomStat(),
+        [StatType.turnovers]: createRandomStat()
+    };
+}
+
 const playerOne = {
     id: 1,
     name: "Sang",
@@ -39,137 +58,49 @@ const playerThree = {
     id: 3,
     name: "Bryce",
     number: "11",
-    stats: {
-        [StatType.twoPointsMade]: 2,
-        [StatType.twoPointsMissed]: 5,
-        [StatType.threePointsMade]: 1,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerFour = {
     id: 4,
     name: "Jeff",
     number: "25",
-    stats: {
-        [StatType.twoPointsMade]: 4,
-        [StatType.twoPointsMissed]: 2,
-        [StatType.threePointsMade]: 3,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerFive = {
     id: 5,
     name: "Andrew",
     number: "7",
-    stats: {
-        [StatType.twoPointsMade]: 4,
-        [StatType.twoPointsMissed]: 2,
-        [StatType.threePointsMade]: 3,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerSix = {
     id: 6,
     name: "Rodell",
     number: "15",
-    stats: {
-        [StatType.twoPointsMade]: 6,
-        [StatType.twoPointsMissed]: 2,
-        [StatType.threePointsMade]: 3,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 }
 const playerSeven = {
     id: 7,
     name: "Mike",
     number: "23",
-    stats: {
-        [StatType.twoPointsMade]: 5,
-        [StatType.twoPointsMissed]: 3,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerEight = {
     id: 8,
     name: "Max",
     number: "16",
-    stats: {
-        [StatType.twoPointsMade]: 5,
-        [StatType.twoPointsMissed]: 3,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerNine = {
     id: 9,
     name: "Timmy",
     number: "1",
-    stats: {
-        [StatType.twoPointsMade]: 5,
-        [StatType.twoPointsMissed]: 3,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 const playerTen = {
     id: 10,
     name: "Kevin",
     number: "00",
-    stats: {
-        [StatType.twoPointsMade]: 5,
-        [StatType.twoPointsMissed]: 3,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 2,
-        [StatType.oRebounds]: 0,
-        [StatType.dRebounds]: 0,
-        [StatType.assists]: 2,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: createRandomStats(),
 };
 
 const mockPlayers = [playerOne,

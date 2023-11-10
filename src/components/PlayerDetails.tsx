@@ -27,10 +27,15 @@ const PlayerDetails = ({ player }: PlayerDetailsProps) => {
         return threePointMade + threePointMissed;
     }
 
+    const getTotalPoints = () => {
+        return threePointMade * 3 + twoPointMade * 2;
+    }
+
     return (
         <tr>
             <td>{player.number}</td>
             <td>{player.name}</td>
+            <td>{getTotalPoints()}</td>
             <td>{getFieldGoalsMade()}</td>
             <td>{getFieldGoalsAttempted()}</td>
             <td>{threePointMade}</td>

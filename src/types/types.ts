@@ -20,4 +20,4 @@ interface Team {
     players: Player[];
 }
 
-export { Stat, Player, Team, InputChangeEvent }
+export type { Stat, Player, Team, InputChangeEvent }

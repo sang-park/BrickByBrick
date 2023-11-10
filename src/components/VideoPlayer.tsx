@@ -12,7 +12,7 @@ const VideoPlayer = () => {
     return (
         <div>
             Youtube video ID (whatever comes after v=): <input type="text" onChange={change} value={ytVideo}></input>
-            <YouTube videoId={ytVideo} />
+            {/* <YouTube videoId={ytVideo} /> */}
         </div>
     );
 }
