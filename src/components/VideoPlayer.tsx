@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import YouTube from 'react-youtube';
 import { InputChangeEvent } from '../types/types';
 
 const VideoPlayer = () => {

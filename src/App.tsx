@@ -10,9 +10,11 @@ import { usePlayerLogic } from './hooks/usePlayerLogic';
 import { mockTeams } from './mocks/teams';
 import YoutubeWrapper from './components/YoutubeWrapper';
 import { TeamType } from './types/enums';
+import { StatLog } from './types/types';
 
 function App() {
     const [ytPlayer, setYtPlayer] = useState<React.RefObject<any> | null>(null);
+    const [statLog, setStatLog] = useState<StatLog[]>([]);
 
     const {
         teams,
@@ -35,22 +37,29 @@ function App() {
         const updatedTeams = [...teams];
         const player = updatedTeams[teamIndex].players[playerIndex];
 
+        console.log(Math.round(ytPlayer?.current.getCurrentTime()));
+
         if (selectedStat) {
             player.stats[selectedStat] = (player.stats[selectedStat] || 0) + 1;
         }
-        if (ytPlayer && ytPlayer.current) {
-            const currentTime = ytPlayer.current.getCurrentTime();
-            console.log(currentTime);
+        if (selectedStat && ytPlayer && ytPlayer.current) {
+            const currentTime = Math.round(ytPlayer.current.getCurrentTime());
+            const curStat: StatLog = {
+                statType: selectedStat,
+                playerId: playerId,
+                time: currentTime
+            }
+            setStatLog((prev) => [...prev, curStat]);
         }
 
         setTeams(updatedTeams);
         setSelectedStat(null); // reset the selected stat after updating
     };
 
+
     return (
         <div className="App">
             <TeamSetup addPlayerToTeam={addPlayerToTeam} />
-            <VideoPlayer />
             <YoutubeWrapper setYtPlayer={setYtPlayer} />
             <div>
                 total points:
@@ -69,6 +78,9 @@ function App() {
                     <StatButtons onStatSelected={handleStatSelection} />
                 )}
             </div>
+
+            {statLog.map((stat) => <div>{stat.playerId} {stat.statType} {stat.time}</div>)}
+
             <PlayerStats teams={teams} />
         </div>
     );

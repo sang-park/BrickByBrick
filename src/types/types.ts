@@ -5,6 +5,12 @@ type Stat = {
     [key in StatType]?: number;
 }
 
+type StatLog = {
+    playerId: number,
+    statType: StatType,
+    time: number,
+}
+
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 
@@ -20,4 +26,4 @@ interface Team {
     players: Player[];
 }
 
-export type { Stat, Player, Team, InputChangeEvent }
+export type { Stat, Player, Team, InputChangeEvent, StatLog }

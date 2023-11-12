@@ -1,21 +1,18 @@
 import { StatType } from "../types/enums";
+import { Player, StatLog } from "../types/types";
 
-const createRandomStat = (max: number = 12) => {
-    return Math.round(Math.random() * max);
-}
-
-const createRandomStats = () => {
+const getDefaultStats = () => {
     return {
-        [StatType.twoPointsMade]: createRandomStat(),
-        [StatType.twoPointsMissed]: createRandomStat(),
-        [StatType.threePointsMade]: createRandomStat(),
-        [StatType.threePointsMissed]: createRandomStat(),
-        [StatType.oRebounds]: createRandomStat(),
-        [StatType.dRebounds]: createRandomStat(),
-        [StatType.assists]: createRandomStat(),
-        [StatType.steals]: createRandomStat(),
-        [StatType.blocks]: createRandomStat(),
-        [StatType.turnovers]: createRandomStat()
+        [StatType.twoPointsMade]: 0,
+        [StatType.twoPointsMissed]: 0,
+        [StatType.threePointsMade]: 0,
+        [StatType.threePointsMissed]: 0,
+        [StatType.oRebounds]: 0,
+        [StatType.dRebounds]: 0,
+        [StatType.assists]: 0,
+        [StatType.steals]: 0,
+        [StatType.blocks]: 0,
+        [StatType.turnovers]: 0
     };
 }
 
@@ -23,85 +20,82 @@ const playerOne = {
     id: 1,
     name: "Sang",
     number: "13",
-    stats: {
-        [StatType.twoPointsMade]: 5,
-        [StatType.twoPointsMissed]: 3,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 4,
-        [StatType.oRebounds]: 5,
-        [StatType.dRebounds]: 6,
-        [StatType.assists]: 7,
-        [StatType.steals]: 8,
-        [StatType.blocks]: 9,
-        [StatType.turnovers]: 0,
-    }
+    stats: getDefaultStats(),
 };
 
 const playerTwo = {
     id: 2,
     name: "Kenny",
     number: "0",
-    stats: {
-        [StatType.twoPointsMade]: 4,
-        [StatType.twoPointsMissed]: 6,
-        [StatType.threePointsMade]: 2,
-        [StatType.threePointsMissed]: 4,
-        [StatType.oRebounds]: 6,
-        [StatType.dRebounds]: 5,
-        [StatType.assists]: 4,
-        [StatType.steals]: 3,
-        [StatType.blocks]: 2,
-        [StatType.turnovers]: 1,
-    }
+    stats: getDefaultStats(),
 };
 const playerThree = {
     id: 3,
     name: "Bryce",
     number: "11",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerFour = {
     id: 4,
     name: "Jeff",
     number: "25",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerFive = {
     id: 5,
     name: "Andrew",
     number: "7",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerSix = {
     id: 6,
     name: "Rodell",
     number: "15",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 }
 const playerSeven = {
     id: 7,
     name: "Mike",
     number: "23",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerEight = {
     id: 8,
     name: "Max",
     number: "16",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerNine = {
     id: 9,
     name: "Timmy",
     number: "1",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
 const playerTen = {
     id: 10,
     name: "Kevin",
     number: "00",
-    stats: createRandomStats(),
+    stats: getDefaultStats(),
 };
+
+
+const randomStats = [];
+
+// playerId, statType, time
+for (let i = 1; i < 11; i++) {
+    for (let type of Object.values(StatType)) {
+        const rand = Math.round(Math.random() * 6);
+        for (let j = 0; j < rand; j++) {
+            let newStat: StatLog = {
+                playerId: i,
+                statType: type,
+                time: (Math.round(Math.random() * 300))
+            }
+
+            randomStats.push(newStat);
+        }
+    }
+}
 
 const mockPlayers = [playerOne,
     playerTwo,
@@ -112,6 +106,17 @@ const mockPlayers = [playerOne,
     playerSeven,
     playerEight,
     playerNine,
-    playerTen]
+    playerTen
+]
+
+const playerMap: { [key: number]: Player } = {};
+for (let player of mockPlayers) {
+    playerMap[player.id] = player;
+}
+
+for (let stat of randomStats) {
+    let curVal = playerMap[stat.playerId].stats[stat.statType] || 0;
+    playerMap[stat.playerId].stats[stat.statType] = curVal + 1;
+}
 
 export { mockPlayers };
