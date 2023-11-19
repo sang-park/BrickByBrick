@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -8,13 +9,20 @@
 }
 
 table {
-  border-collapse: collapse; /* Ensures borders are collapsed into a single, adjacent border */
-  border: 1px solid black;   /* Outer border for the table */
+  border-collapse: collapse;
+  /* Ensures borders are collapsed into a single, adjacent border */
+  border: 1px solid black;
+  /* Outer border for the table */
   margin: auto;
 }
-td, th { /* Targets table cells and headers */
-  border: 1px solid black;   /* Border for each cell */
-  padding: 8px;              /* Optional: Padding inside each cell */
+
+td,
+th {
+  /* Targets table cells and headers */
+  border: 1px solid black;
+  /* Border for each cell */
+  padding: 8px;
+  /* Optional: Padding inside each cell */
 }
 
 
@@ -31,11 +39,12 @@ td, th { /* Targets table cells and headers */
     }
   }
 
-  .team:last-child .player{
-    background-color: #e030e2; /* some arbitrary button color */
+  .team:last-child .player {
+    background-color: #e030e2;
+    /* some arbitrary button color */
 
   }
-  
+
   .player-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -45,31 +54,44 @@ td, th { /* Targets table cells and headers */
   }
 
   .player {
-      display: inline-block;
-      padding: 10px 20px; /* give it some space, like a button */
-      margin: 5px 0; /* some space between each button-like div */
-      background-color: #4a90e2; /* some arbitrary button color */
-      color: white; /* text color */
-      border: none;
-      border-radius: 4px; /* rounded corners */
-      text-align: center; /* center the text horizontally */
-      cursor: pointer; /* make it look clickable */
-      transition: background-color 0.3s; /* smooth color transition */
-      flex: 1; /* Allow players to grow and take available space */
-      width: 50px; /* Let the player take the full grid cell width */
-  
-      /* Optional: hover effect */
-      &:hover {
-          background-color: #357ab7; /* darken the color a bit on hover */
-      }
+    display: inline-block;
+    padding: 10px 20px;
+    /* give it some space, like a button */
+    margin: 5px 0;
+    /* some space between each button-like div */
+    background-color: #4a90e2;
+    /* some arbitrary button color */
+    color: white;
+    /* text color */
+    border: none;
+    border-radius: 4px;
+    /* rounded corners */
+    text-align: center;
+    /* center the text horizontally */
+    cursor: pointer;
+    /* make it look clickable */
+    transition: background-color 0.3s;
+    /* smooth color transition */
+    flex: 1;
+    /* Allow players to grow and take available space */
+    width: 50px;
+    /* Let the player take the full grid cell width */
 
-
-      .player:nth-child(4) {
-        grid-column-start: 2; /* The 4th player starts at the second column */
+    /* Optional: hover effect */
+    &:hover {
+      background-color: #357ab7;
+      /* darken the color a bit on hover */
     }
-    
+
+
+    .player:nth-child(4) {
+      grid-column-start: 2;
+      /* The 4th player starts at the second column */
+    }
+
     .player:nth-child(5) {
-        grid-column-start: 3; /* The 5th player starts at the third column */
+      grid-column-start: 3;
+      /* The 5th player starts at the third column */
     }
   }
 
@@ -91,12 +113,17 @@ td, th { /* Targets table cells and headers */
       transform: scale(1.05);
     }
   }
-  .two-pt-made, .three-pt-made, .two-pt-missed, .three-pt-missed {
+
+  .two-pt-made,
+  .three-pt-made,
+  .two-pt-missed,
+  .three-pt-missed {
     color: white;
-    
+
   }
-  
-  .two-pt-made, .three-pt-made {
+
+  .two-pt-made,
+  .three-pt-made {
     background-color: #4CAF50;
 
     &:hover {
@@ -104,7 +131,8 @@ td, th { /* Targets table cells and headers */
     }
   }
 
-  .two-pt-missed, .three-pt-missed {
+  .two-pt-missed,
+  .three-pt-missed {
     background-color: #E53935;
 
     &:hover {
@@ -123,14 +151,19 @@ td, th { /* Targets table cells and headers */
     grid-row: 2;
   }
 
-  .ast, .stl, .blk {
+  .ast,
+  .stl,
+  .blk {
     grid-column: 2 / span 1; // Span across 2 columns
     grid-row: auto; // Let it auto position in the rows
   }
-  .oreb, .dreb {
+
+  .oreb,
+  .dreb {
     grid-column: 3 / span 1; // Span across 2 columns
     grid-row: auto; // Let it auto position in the rows
   }
+
   .three-pt-made {
     grid-column: 4;
     grid-row: 1;
@@ -140,4 +173,9 @@ td, th { /* Targets table cells and headers */
     grid-column: 4;
     grid-row: 2;
   }
+}
+
+.log-list {
+  display: flex;
+  flex-direction: column;
 }

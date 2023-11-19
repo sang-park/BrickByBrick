@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import YouTube from 'react-youtube';
+import YouTube, { YouTubeProps } from 'react-youtube';
 
 interface YoutubeWrapperProps {
     setYtPlayer: (player: any) => void;
@@ -12,7 +12,6 @@ function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
         if (!playerRef.current) {
             return;
         }
-        e.preventDefault();
         const currentTime = playerRef.current.getCurrentTime();
 
         switch (e.code) {
@@ -29,6 +28,7 @@ function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
                 playerRef.current.setVolume(playerRef.current.getVolume() - 10);
                 break;
             case 'Space':
+                e.preventDefault();
                 // 1 is playing
                 playerRef.current.getPlayerState() === 1 ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
                 break;
@@ -44,7 +44,7 @@ function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
         };
     }, []);
 
-    const onPlayerReady = (event: any) => {
+    const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
         playerRef.current = event.target;
         setYtPlayer(playerRef);
     }
@@ -75,7 +75,7 @@ function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
         }
     };
 
-    const opts = {
+    const opts: YouTubeProps['opts'] = {
         height: '390',
         width: '640',
         playerVars: {
