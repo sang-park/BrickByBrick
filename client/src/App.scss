@@ -102,44 +102,6 @@ th {
   grid-template-columns: 1fr 1fr 1fr 1fr; // Divides into 4 columns
   gap: 10px;
 
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-
-  .two-pt-made,
-  .three-pt-made,
-  .two-pt-missed,
-  .three-pt-missed {
-    color: white;
-
-  }
-
-  .two-pt-made,
-  .three-pt-made {
-    background-color: #4CAF50;
-
-    &:hover {
-      background-color: darken(#4CAF50, 10%);
-    }
-  }
-
-  .two-pt-missed,
-  .three-pt-missed {
-    background-color: #E53935;
-
-    &:hover {
-      background-color: darken(#E53935, 10%);
-    }
-  }
-
   // Positioning
   .two-pt-made {
     grid-column: 1;
@@ -152,8 +114,7 @@ th {
   }
 
   .ast,
-  .stl,
-  .blk {
+  .stl {
     grid-column: 2 / span 1; // Span across 2 columns
     grid-row: auto; // Let it auto position in the rows
   }
@@ -162,6 +123,10 @@ th {
   .dreb {
     grid-column: 3 / span 1; // Span across 2 columns
     grid-row: auto; // Let it auto position in the rows
+  }
+
+  .to {
+    grid-area: 2 / 2 / 3 / 3;
   }
 
   .three-pt-made {

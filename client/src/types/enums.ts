@@ -2,6 +2,7 @@ enum TeamType {
     HOME = "HOME",
     AWAY = "AWAY"
 }
+
 enum StatType {
     twoPointsMade = "twoPointsMade",
     twoPointsMissed = "twoPointsMissed",

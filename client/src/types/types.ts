@@ -5,6 +5,14 @@ type Stat = {
     [key in StatType]?: number;
 }
 
+type StatMetadata = {
+    statType: StatType,
+    displayableString: string,
+    variant?: "outlined" | "contained" | "text",
+    color?: "primary" | "inherit" | "secondary" | "success" | "error" | "info" | "warning",
+    className: string,
+}
+
 type StatLog = {
     playerId: number,
     statType: StatType,
@@ -26,4 +34,4 @@ interface Team {
     players: Player[];
 }
 
-export type { Stat, Player, Team, InputChangeEvent, StatLog }
+export type { Stat, Player, Team, InputChangeEvent, StatLog, StatMetadata }
