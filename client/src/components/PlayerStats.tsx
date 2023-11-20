@@ -1,44 +1,64 @@
 import React from 'react';
-import PlayerDetails from './PlayerDetails';
-import { Team } from '../types/types';
+import { Player, Team } from '../types/types';
+import { DataGrid } from '@mui/x-data-grid';
+import { StatType } from '../types/enums';
+import { playerStatHeaders } from '../constants/PlayerDataTableConfig';
+
 
 interface PlayerStatsProps {
     teams: Team[];
 };
 
 const PlayerStats = ({ teams }: PlayerStatsProps) => {
+    function getStat(player: Player, statType: StatType): number {
+        return player.stats[statType] || 0;
+    }
+    const getTotalPoints = (player: Player) => {
+        return getStat(player, StatType.threePointsMade) * 3 + getStat(player, StatType.twoPointsMade) * 2;
+    }
+    const getFieldGoalsMade = (player: Player) => {
+        return getStat(player, StatType.threePointsMade) + getStat(player, StatType.twoPointsMade);
+    }
+    const getFieldGoalsAttempted = (player: Player) => {
+        return getFieldGoalsMade(player) + getStat(player, StatType.threePointsMissed) + getStat(player, StatType.twoPointsMissed);
+    }
+    const getThreePointAttempted = (player: Player) => {
+        return getStat(player, StatType.threePointsMade) + getStat(player, StatType.threePointsMissed);
+    }
+
+    const playerToRow = (player: Player) => {
+        let oReb = getStat(player, StatType.oRebounds);
+        let dReb = getStat(player, StatType.dRebounds);
+        let tReb = oReb + dReb;
+
+        return {
+            id: player.id,
+            number: player.number,
+            name: player.name,
+            pts: getTotalPoints(player),
+            fgm: getFieldGoalsMade(player),
+            fga: getFieldGoalsAttempted(player),
+            '3ptm': getStat(player, StatType.threePointsMade),
+            '3pta': getThreePointAttempted(player),
+            oReb,
+            dReb,
+            tReb,
+            ast: getStat(player, StatType.assists),
+            stl: getStat(player, StatType.steals),
+            blk: getStat(player, StatType.blocks),
+            to: getStat(player, StatType.turnovers),
+        }
+
+    }
+
     return (
-        <div>
-            {teams.map((team: Team, teamIndex: number) => (
-                <div key={teamIndex}>
-                    <h2>{team.type}</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Number</th>
-                                <th>Name</th>
-                                <th>PTS</th>
-                                <th>FGM</th>
-                                <th>FGA</th>
-                                <th>3PTM</th>
-                                <th>3PTA</th>
-                                <th>OR</th>
-                                <th>DR</th>
-                                <th>TR</th>
-                                <th>AST</th>
-                                <th>STL</th>
-                                <th>BLK</th>
-                                <th>TO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {team.players.map(player => (
-                                <PlayerDetails key={player.id} player={player} />
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            ))}
+        <div className='player-stats-wrapper'>
+            {teams.map(team => (
+                <DataGrid
+                    rows={team.players.map(player => playerToRow(player))}
+                    columns={playerStatHeaders}
+                />
+            ))};
         </div>
     );
 }

@@ -57,7 +57,7 @@ const StatSelector = () => {
         <>
             <div className="player-select-wrapper">
                 {selectedStat ? (
-                    teams.map((team) => (
+                    teams.map(team => (
                         <PlayerSelect key={team.type} team={team} updatePlayerStat={updatePlayerStat} />
                     ))
                 ) : (

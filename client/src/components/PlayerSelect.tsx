@@ -1,6 +1,7 @@
 import React from 'react';
 import { Team } from '../types/types';
 import { TeamType } from '../types/enums';
+import { Button } from '@mui/material';
 
 interface PlayerSelectProps {
     team: Team;
@@ -14,9 +15,14 @@ const PlayerSelect = ({ team, updatePlayerStat }: PlayerSelectProps) => {
             <div className="team-name">{team.type}</div>
             <div className="player-list">
                 {team.players.map(player => (
-                    <div key={player.id} className="player" onClick={() => updatePlayerStat(team.type, player.id)}>
+                    <Button
+                        key={player.id}
+                        className="player"
+                        variant="contained"
+                        color={team.type == TeamType.HOME ? "primary" : "secondary"}
+                        onClick={() => updatePlayerStat(team.type, player.id)}>
                         {player.name}
-                    </div>
+                    </Button>
                 ))}
             </div>
         </div>

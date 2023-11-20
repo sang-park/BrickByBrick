@@ -9,11 +9,15 @@ const Scoreboard = () => {
     } = useTeamLogic(mockTeams);
 
     return (
-        <div>
-            total points:
+        <div className="scoreboard-wrapper">
             {teams.map((team) => (
-                <div key={team.type}>
-                    {team.type}: {getTeamScore(team)}
+                <div key={team.type} className="scoreboard">
+                    <div className="team-type">
+                        {team.type}
+                    </div>
+                    <div className="team-score">
+                        {getTeamScore(team)}
+                    </div>
                 </div>
             ))}
         </div>

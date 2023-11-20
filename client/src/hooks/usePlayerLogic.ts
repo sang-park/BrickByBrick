@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { Team } from "../types/types";
-import { StatType, TeamType } from "../types/enums";
+import { StatType } from "../types/enums";
 
 function usePlayerLogic(initialTeams: Team[]) {
     const [teams, setTeams] = useState<Team[]>(initialTeams);

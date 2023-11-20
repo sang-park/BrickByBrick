@@ -1,3 +1,6 @@
+@import "@fontsource/orbitron";
+@import "@fontsource/roboto";
+
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -7,24 +10,6 @@
 .stat-button {
   margin: 4px;
 }
-
-table {
-  border-collapse: collapse;
-  /* Ensures borders are collapsed into a single, adjacent border */
-  border: 1px solid black;
-  /* Outer border for the table */
-  margin: auto;
-}
-
-td,
-th {
-  /* Targets table cells and headers */
-  border: 1px solid black;
-  /* Border for each cell */
-  padding: 8px;
-  /* Optional: Padding inside each cell */
-}
-
 
 .player-select-wrapper {
   display: flex;
@@ -39,12 +24,6 @@ th {
     }
   }
 
-  .team:last-child .player {
-    background-color: #e030e2;
-    /* some arbitrary button color */
-
-  }
-
   .player-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -54,47 +33,9 @@ th {
   }
 
   .player {
-    display: inline-block;
-    padding: 10px 20px;
-    /* give it some space, like a button */
-    margin: 5px 0;
-    /* some space between each button-like div */
-    background-color: #4a90e2;
-    /* some arbitrary button color */
-    color: white;
-    /* text color */
-    border: none;
-    border-radius: 4px;
-    /* rounded corners */
-    text-align: center;
-    /* center the text horizontally */
-    cursor: pointer;
-    /* make it look clickable */
-    transition: background-color 0.3s;
-    /* smooth color transition */
-    flex: 1;
-    /* Allow players to grow and take available space */
-    width: 50px;
-    /* Let the player take the full grid cell width */
-
-    /* Optional: hover effect */
-    &:hover {
-      background-color: #357ab7;
-      /* darken the color a bit on hover */
-    }
-
-
-    .player:nth-child(4) {
-      grid-column-start: 2;
-      /* The 4th player starts at the second column */
-    }
-
-    .player:nth-child(5) {
-      grid-column-start: 3;
-      /* The 5th player starts at the third column */
-    }
+    width: 80px;
+    height: 40px;
   }
-
 }
 
 .stat-buttons {
@@ -143,4 +84,42 @@ th {
 .log-list {
   display: flex;
   flex-direction: column;
+}
+
+.player-stats-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scoreboard-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: x-large;
+
+  .scoreboard {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    margin: 8px;
+    padding: 8px;
+    font-weight: bold;
+
+    .team-type {
+      display: flex;
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .team-score {
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      color: red;
+      font-size: xx-large;
+    }
+  }
 }
