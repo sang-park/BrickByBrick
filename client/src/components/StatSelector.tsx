@@ -8,9 +8,6 @@ import { TeamType } from '../types/enums';
 import { StatLog } from '../types/types';
 import { useYtPlayer } from '../context/YtPlayerContext';
 
-interface StatSelectorProps {
-}
-
 const StatSelector = () => {
     const [statLog, setStatLog] = useState<StatLog[]>([]);
 
