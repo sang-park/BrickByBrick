@@ -15,15 +15,17 @@ function App() {
     const {
         teams,
         addPlayerToTeam,
-    } = useTeamLogic(mockTeams);
+        setTeams,
+    } = useTeamLogic([]);
+
 
     return (
         <div className="App">
             <YtPlayerContext.Provider value={ytPlayer}>
                 <TeamSetup addPlayerToTeam={addPlayerToTeam} />
                 <YoutubeWrapper setYtPlayer={setYtPlayer} />
-                <Scoreboard />
-                <StatSelector />
+                <Scoreboard teams={teams} />
+                <StatSelector teams={teams} setTeams={setTeams} />
                 <PlayerStats teams={teams} />
             </YtPlayerContext.Provider>
         </div>

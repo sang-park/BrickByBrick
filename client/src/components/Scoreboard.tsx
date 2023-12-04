@@ -1,12 +1,14 @@
 import React from 'react';
 import { useTeamLogic } from '../hooks/useTeamLogic';
-import { mockTeams } from '../mocks/teams';
+import { Team } from '../types/types';
 
-const Scoreboard = () => {
+interface ScoreboardProps {
+    teams: Team[];
+};
+const Scoreboard = ({ teams }: ScoreboardProps) => {
     const {
-        teams,
         getTeamScore,
-    } = useTeamLogic(mockTeams);
+    } = useTeamLogic([]);
 
     return (
         <div className="scoreboard-wrapper">

@@ -8,6 +8,8 @@ enum StatType {
     twoPointsMissed = "twoPointsMissed",
     threePointsMade = "threePointsMade",
     threePointsMissed = "threePointsMissed",
+    freeThrowsMade = "freeThrowsMade",
+    freeThrowsMissed = "freeThrowsMissed",
     oRebounds = "oRebounds",
     dRebounds = "dRebounds",
     assists = "assists",

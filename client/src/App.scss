@@ -46,38 +46,62 @@
   // Positioning
   .two-pt-made {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   .two-pt-missed {
     grid-column: 1;
+    grid-row: 3;
+  }
+
+  .ast {
+    grid-column: 2;
     grid-row: 2;
   }
 
-  .ast,
   .stl {
-    grid-column: 2 / span 1; // Span across 2 columns
-    grid-row: auto; // Let it auto position in the rows
+    grid-column: 2;
+    grid-row: 3;
   }
 
-  .oreb,
+  .oreb {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
   .dreb {
-    grid-column: 3 / span 1; // Span across 2 columns
-    grid-row: auto; // Let it auto position in the rows
+    grid-column: 3;
+    grid-row: 2;
   }
 
   .to {
-    grid-area: 2 / 2 / 3 / 3;
+    grid-column: 3;
+    grid-row: 5;
   }
 
   .three-pt-made {
     grid-column: 4;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   .three-pt-missed {
     grid-column: 4;
-    grid-row: 2;
+    grid-row: 3;
+  }
+
+  .blk {
+    grid-column: 2;
+    grid-row: 5;
+  }
+
+  .ft-made {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ft-missed {
+    grid-column: 3;
+    grid-row: 1;
   }
 }
 
@@ -121,5 +145,16 @@
       color: red;
       font-size: xx-large;
     }
+  }
+}
+
+.team-setup {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+
+  * {
+    margin: 4px;
   }
 }

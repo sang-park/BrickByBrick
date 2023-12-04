@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Player, Team } from '../types/types';
 import { DataGrid } from '@mui/x-data-grid';
 import { StatType } from '../types/enums';
@@ -10,6 +10,12 @@ interface PlayerStatsProps {
 };
 
 const PlayerStats = ({ teams }: PlayerStatsProps) => {
+    const [currentTeams, setCurrentTeams] = useState<Team[]>([]);
+
+    useEffect(() => {
+        setCurrentTeams(teams);
+    }, [teams]);
+
     function getStat(player: Player, statType: StatType): number {
         return player.stats[statType] || 0;
     }
@@ -24,6 +30,9 @@ const PlayerStats = ({ teams }: PlayerStatsProps) => {
     }
     const getThreePointAttempted = (player: Player) => {
         return getStat(player, StatType.threePointsMade) + getStat(player, StatType.threePointsMissed);
+    }
+    const getFreeThrowAttempted = (player: Player) => {
+        return getStat(player, StatType.freeThrowsMade) + getStat(player, StatType.freeThrowsMissed);
     }
 
     const playerToRow = (player: Player) => {
@@ -40,6 +49,8 @@ const PlayerStats = ({ teams }: PlayerStatsProps) => {
             fga: getFieldGoalsAttempted(player),
             '3ptm': getStat(player, StatType.threePointsMade),
             '3pta': getThreePointAttempted(player),
+            ftm: getStat(player, StatType.freeThrowsMade),
+            fta: getFreeThrowAttempted(player),
             oReb,
             dReb,
             tReb,
@@ -48,12 +59,11 @@ const PlayerStats = ({ teams }: PlayerStatsProps) => {
             blk: getStat(player, StatType.blocks),
             to: getStat(player, StatType.turnovers),
         }
-
     }
 
     return (
         <div className='player-stats-wrapper'>
-            {teams.map(team => (
+            {currentTeams.map(team => (
                 <DataGrid
                     rows={team.players.map(player => playerToRow(player))}
                     columns={playerStatHeaders}

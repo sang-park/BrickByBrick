@@ -6,9 +6,10 @@ import { Button } from '@mui/material';
 interface PlayerSelectProps {
     team: Team;
     updatePlayerStat: (teamType: TeamType, playerId: number) => void;
+    resetSelection: () => void;
 }
 
-const PlayerSelect = ({ team, updatePlayerStat }: PlayerSelectProps) => {
+const PlayerSelect = ({ team, updatePlayerStat, resetSelection }: PlayerSelectProps) => {
 
     return (
         <div key={team.type} className="team">
@@ -25,6 +26,13 @@ const PlayerSelect = ({ team, updatePlayerStat }: PlayerSelectProps) => {
                     </Button>
                 ))}
             </div>
+            <Button
+                className="player"
+                variant="contained"
+                color="error"
+                onClick={() => resetSelection()}>
+                Undo
+            </Button>
         </div>
     );
 }

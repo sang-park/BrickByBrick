@@ -33,6 +33,9 @@ function useTeamLogic(initialTeams: Team[]) {
             if (player.stats.threePointsMade && player.stats.threePointsMade > 0) {
                 score += player.stats.threePointsMade * 3;
             }
+            if (player.stats.freeThrowsMade && player.stats.freeThrowsMade > 0) {
+                score += player.stats.freeThrowsMade;
+            }
         }
         return score;
     }, []);
@@ -41,6 +44,7 @@ function useTeamLogic(initialTeams: Team[]) {
         teams,
         addPlayerToTeam,
         getTeamScore,
+        setTeams,
     };
 }
 

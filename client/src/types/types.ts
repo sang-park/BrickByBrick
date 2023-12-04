@@ -15,6 +15,7 @@ type StatMetadata = {
 
 type StatLog = {
     playerId: number,
+    playerName: string,
     statType: StatType,
     time: number,
 }

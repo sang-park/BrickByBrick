@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
-import { useTeamLogic } from '../hooks/useTeamLogic';
-import { mockTeams } from '../mocks/teams';
 import PlayerSelect from './PlayerSelect';
 import StatButtons from './StatButtons';
 import { usePlayerLogic } from '../hooks/usePlayerLogic';
 import { TeamType } from '../types/enums';
-import { StatLog } from '../types/types';
+import { StatLog, Team } from '../types/types';
 import { useYtPlayer } from '../context/YtPlayerContext';
 
-const StatSelector = () => {
+interface StatSelectorProps {
+    teams: Team[];
+    setTeams: (team: any) => void;
+}
+const StatSelector = ({ teams, setTeams }: StatSelectorProps) => {
     const [statLog, setStatLog] = useState<StatLog[]>([]);
 
     const {
-        teams,
-    } = useTeamLogic(mockTeams);
-
-    const {
         selectedStat,
-        setTeams,
         setSelectedStat,
         handleStatSelection,
+        resetSelection,
     } = usePlayerLogic(teams);
 
     const ytPlayer = useYtPlayer();
@@ -40,6 +38,7 @@ const StatSelector = () => {
             const curStat: StatLog = {
                 statType: selectedStat,
                 playerId: playerId,
+                playerName: player.name || "",
                 time: currentTime
             }
             setStatLog((prev) => [...prev, curStat]);
@@ -55,14 +54,18 @@ const StatSelector = () => {
             <div className="player-select-wrapper">
                 {selectedStat ? (
                     teams.map(team => (
-                        <PlayerSelect key={team.type} team={team} updatePlayerStat={updatePlayerStat} />
+                        <PlayerSelect
+                            key={team.type}
+                            team={team}
+                            updatePlayerStat={updatePlayerStat}
+                            resetSelection={resetSelection} />
                     ))
                 ) : (
                     <StatButtons onStatSelected={handleStatSelection} />
                 )}
             </div>
             <div className='log-list'>
-                {statLog.map((stat) => <div>{stat.playerId} {stat.statType} {stat.time}</div>)}
+                {statLog.map((stat) => <div>{stat.playerId} {stat.playerName} {stat.statType} {stat.time}</div>)}
             </div>
         </>
     );

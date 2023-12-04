@@ -8,6 +8,8 @@ const playerStatHeaders: GridColDef[] = [
     { field: 'fga', headerName: 'FGA', width: 80 },
     { field: '3ptm', headerName: '3PTM', width: 80 },
     { field: '3pta', headerName: '3PTA', width: 80 },
+    { field: 'ftm', headerName: 'FTM', width: 80 },
+    { field: 'fta', headerName: 'FTA', width: 80 },
     { field: 'oReb', headerName: 'OREB', width: 80 },
     { field: 'dReb', headerName: 'DREB', width: 80 },
     { field: 'tReb', headerName: 'REB', width: 80 },

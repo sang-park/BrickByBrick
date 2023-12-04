@@ -7,6 +7,8 @@ const getDefaultStats = () => {
         [StatType.twoPointsMissed]: 0,
         [StatType.threePointsMade]: 0,
         [StatType.threePointsMissed]: 0,
+        [StatType.freeThrowsMissed]: 0,
+        [StatType.freeThrowsMade]: 0,
         [StatType.oRebounds]: 0,
         [StatType.dRebounds]: 0,
         [StatType.assists]: 0,
@@ -80,23 +82,6 @@ const playerTen = {
 
 
 const randomStats = [];
-
-// playerId, statType, time
-for (let i = 1; i < 11; i++) {
-    for (let type of Object.values(StatType)) {
-        const rand = Math.round(Math.random() * 6);
-        for (let j = 0; j < rand; j++) {
-            let newStat: StatLog = {
-                playerId: i,
-                statType: type,
-                time: (Math.round(Math.random() * 300))
-            }
-
-            randomStats.push(newStat);
-        }
-    }
-}
-
 const mockPlayers = [
     playerOne,
     playerTwo,
@@ -109,6 +94,24 @@ const mockPlayers = [
     playerNine,
     playerTen
 ]
+
+// playerId, statType, time
+for (let i = 1; i < 11; i++) {
+    for (let type of Object.values(StatType)) {
+        const rand = Math.round(Math.random() * 6);
+        for (let j = 0; j < rand; j++) {
+            let newStat: StatLog = {
+                playerId: i,
+                playerName: '',
+                statType: type,
+                time: (Math.round(Math.random() * 300))
+            }
+
+            randomStats.push(newStat);
+        }
+    }
+}
+
 
 const playerMap: { [key: number]: Player } = {};
 

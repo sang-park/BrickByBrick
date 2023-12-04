@@ -3,18 +3,21 @@ import { Team } from "../types/types";
 import { StatType } from "../types/enums";
 
 function usePlayerLogic(initialTeams: Team[]) {
-    const [teams, setTeams] = useState<Team[]>(initialTeams);
     const [selectedStat, setSelectedStat] = useState<StatType | null>(null);
 
     const handleStatSelection = useCallback((stat: StatType) => {
         setSelectedStat(stat);
     }, []);
 
+    const resetSelection = () => {
+        setSelectedStat(null);
+    };
+
     return {
         selectedStat,
         handleStatSelection,
-        setTeams,
         setSelectedStat,
+        resetSelection,
     };
 }
 

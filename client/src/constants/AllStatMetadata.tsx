@@ -33,11 +33,26 @@ const threePointsMissed: StatMetadata = {
     className: "three-pt-missed",
 };
 
+const freeThrowsMade: StatMetadata = {
+    statType: StatType.freeThrowsMade,
+    displayableString: "FT Made",
+    variant: "contained",
+    color: "success",
+    className: "ft-made",
+};
+
+const freeThrowsMissed: StatMetadata = {
+    statType: StatType.freeThrowsMissed,
+    displayableString: "FT Missed",
+    variant: "contained",
+    color: "error",
+    className: "ft-missed",
+};
+
 const assist: StatMetadata = {
     statType: StatType.assists,
     displayableString: "AST",
     variant: "outlined",
-    // color: "success",
     className: "ast",
 };
 
@@ -45,7 +60,6 @@ const defensiveRebound: StatMetadata = {
     statType: StatType.dRebounds,
     displayableString: "D-REB",
     variant: "outlined",
-    // color: "success",
     className: "dreb",
 };
 
@@ -53,7 +67,6 @@ const offensiveRebound: StatMetadata = {
     statType: StatType.oRebounds,
     displayableString: "O-REB",
     variant: "outlined",
-    // color: "success",
     className: "oreb",
 };
 
@@ -61,21 +74,18 @@ const turnover: StatMetadata = {
     statType: StatType.turnovers,
     displayableString: "TO",
     variant: "outlined",
-    // color: "success",
     className: "to",
 };
 const steal: StatMetadata = {
     statType: StatType.twoPointsMade,
     displayableString: "STL",
     variant: "outlined",
-    // color: "success",
     className: "stl",
 };
 const block: StatMetadata = {
     statType: StatType.twoPointsMade,
     displayableString: "BLK",
     variant: "outlined",
-    // color: "success",
     className: "blk",
 };
 
@@ -89,5 +99,7 @@ export default [
     offensiveRebound,
     turnover,
     steal,
-    block
+    block,
+    freeThrowsMade,
+    freeThrowsMissed,
 ]; 

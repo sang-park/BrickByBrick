@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import { TextField } from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 
 interface YoutubeWrapperProps {
@@ -6,6 +7,7 @@ interface YoutubeWrapperProps {
 }
 
 function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
+    const [youtubeId, setYoutubeId] = useState<string>("");
     const playerRef = useRef<any>(null);
 
     const handleKeyDown = (e: any) => {
@@ -85,7 +87,14 @@ function YoutubeWrapper({ setYtPlayer }: YoutubeWrapperProps) {
 
     return (
         <div>
-            <YouTube videoId="QVOUKUDD4GU" opts={opts} onReady={onPlayerReady} />
+            <TextField
+                id="standard-basic"
+                label="yt id (whatever comes after v=)"
+                variant="outlined"
+                value={youtubeId}
+                onChange={e => setYoutubeId(e.target.value)}
+            />
+            <YouTube videoId={youtubeId} opts={opts} onReady={onPlayerReady} />
             <button onClick={handlePlay}>Play</button>
             <button onClick={handlePause}>Pause</button>
             <button onClick={handleRewind}>Rewind 5s</button>

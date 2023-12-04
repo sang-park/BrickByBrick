@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TeamType } from '../types/enums';
 import { Player } from '../types/types';
 import { getDefaultStatline } from '../utils/utils'
+import { Button, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 
 interface TeamSetupProp {
     addPlayerToTeam: (teamType: TeamType, player: Player) => void;
@@ -31,27 +32,29 @@ const TeamSetup = ({ addPlayerToTeam }: TeamSetupProp) => {
     };
 
     return (
-        <div>
-            <div>
-                <label>Select Team:</label>
-                <select value={team} onChange={e => setTeam(e.target.value === TeamType.HOME ? TeamType.HOME : TeamType.AWAY)}>
-                    <option value="Home">Home</option>
-                    <option value="Away">Away</option>
-                </select>
-            </div>
-            <div>
-                <input
-                    value={playerName}
-                    onChange={e => setPlayerName(e.target.value)}
-                    placeholder="Player Name"
-                />
-                <input
-                    value={playerNumber}
-                    onChange={e => setPlayerNumber(e.target.value)}
-                    placeholder="Player Number"
-                />
-                <button onClick={handleAddPlayer}>Add Player</button>
-            </div>
+        <div className="team-setup">
+            <Select
+                value={team}
+                onChange={e => setTeam(e.target.value as TeamType)}
+            >
+                <MenuItem value={TeamType.HOME}>Home</MenuItem>
+                <MenuItem value={TeamType.AWAY}>Away</MenuItem>
+            </Select>
+            <TextField
+                id="standard-basic"
+                label="Player Name"
+                variant="outlined"
+                value={playerName}
+                onChange={e => setPlayerName(e.target.value)}
+            />
+            <TextField
+                id="standard-basic"
+                label="Player Number"
+                variant="outlined"
+                value={playerNumber}
+                onChange={e => setPlayerNumber(e.target.value)}
+            />
+            <Button variant="contained" onClick={handleAddPlayer}>Add Player</Button>
         </div>
     );
 }
